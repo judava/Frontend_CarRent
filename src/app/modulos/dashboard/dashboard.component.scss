@@ -1,0 +1,10 @@
+/* dashboard.component.css */
+.content {
+    background-image: url('/assets/dist/img/CarRent.jpg'); /* Ruta de la imagen */
+    background-size: cover; /* Hace que la imagen cubra todo el fondo */
+    background-position: center; /* Centra la imagen en el contenedor */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    min-height: 100vh; /* Altura mínima para que cubra toda la pantalla */
+    padding: 20px;
+  }
+  

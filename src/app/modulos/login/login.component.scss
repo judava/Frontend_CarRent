@@ -1,0 +1,34 @@
+// Establecemos que el contenedor ocupe toda la pantalla
+// Establecemos que el contenedor ocupe toda la pantalla
+html, body {
+  height: 100%;
+  margin: 0;
+  background: linear-gradient(to right, #0c343f, #205aa2); // Cambiado a 'background'
+}
+
+
+
+#main-container { // Si tu componente está envuelto en un contenedor principal
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; // Hace que el contenedor ocupe toda la pantalla
+}
+
+.login-box {
+  width: 360px;
+  background-color: rgba(197, 51, 25, 0.8); // Añadido para darle fondo blanco con transparencia
+  padding: 20px;
+  border-radius: 10px; // Bordes redondeados
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); // Sombra sutil
+}
+
+.card {
+  width: 100%;
+  padding: 20px;
+}
+
+.login-box a {
+  font-size: 36px;
+}
+

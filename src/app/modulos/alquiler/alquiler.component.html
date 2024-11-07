@@ -1,0 +1,104 @@
+<div class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1 class="m-0">Alquiler</h1>
+      </div><!-- /.col -->
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item"><a href="#">Home</a></li>
+          <li class="breadcrumb-item active">Alquiler</li>
+        </ol>
+      </div><!-- /.col -->
+    </div><!-- /.row -->
+  </div><!-- /.container-fluid -->
+</div>
+<section class="content">
+<div class="container-fluid">
+  <!--Contenido-->
+  <hr>
+  <input type="button" value="Insertar Alquiler" class="btn btn-warning" (click)="mostrar_form('mostrar')">
+  <!--formulario-->
+  <div id="formulario" *ngIf="mform==true">
+  
+      <div class="row">
+        <div class="col-lg-4">
+          <input type="text" class="form-control" placeholder="id alquiler" [(ngModel)]="obj_alquiler.id_alquiler">
+          <span style="color: red;" *ngIf= "validar_id_alquiler== false">Insertar Id alquiler</span>
+        </div>
+        <div class="col-lg-4">
+          <input type="text" class="form-control" placeholder="Fecha" [(ngModel)]="obj_alquiler.fecha">
+          <span style="color: red;" *ngIf= "validar_fecha== false">Insertar Fecha</span></div>
+        <div class="col-lg-4">
+          <input type="text" class="form-control" placeholder="Duracion" [(ngModel)]="obj_alquiler.duracion">
+          <span style="color: red;" *ngIf= "validar_duracion== false">Insertar Duracion</span>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-lg-4">
+          <input type="text" class="form-control" placeholder="Precio" [(ngModel)]="obj_alquiler.precio">
+          <span style="color: red;" *ngIf= "validar_precio== false">Insertar Precio</span>
+        </div>
+        <div class="col-lg-4">
+          <select class="form-control form-select" [(ngModel)]="obj_alquiler.fo_auto">
+            <option value="0" label="Seleccione auto" selected="selected">Seleccionar codigo Auto</option>
+            <option *ngFor="let itema of auto" value="{{itema.id_auto}}">{{itema.id_auto}}</option>
+            <span style="color: red;" *ngIf= "validar_auto== false">Insertar Auto</span>
+          </select>
+        </div>
+        <div class="col-lg-4">
+          <select class="form-control form-select" [(ngModel)]="obj_alquiler.fo_cliente">
+            <option value="0" label="Seleccione cliente" selected="selected">Seleccionar codigo Cliente</option>
+            <option *ngFor="let itemc of cliente" value="{{itemc.id_cliente}}">{{itemc.id_cliente}}</option>
+            <span style="color: red;" *ngIf= "validar_cliente== false">Insertar Cliente</span>
+          </select>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-lg-4">
+          <input type="button" value="Guardar" class="btn btn-primary" style="width: 70%;" (click)="validar('guardar')" *ngIf="botones_form==false">
+          <input type="button" value="Editar" class="btn btn-primary" style="width: 70%;" (click)="validar('editar')" *ngIf="botones_form==true">
+        </div>
+        <div class="col-lg-4">
+          <input type="button" value="Cancelar" class="btn btn-secondary" style="width: 70%;" (click)="mostrar_form('ocultar')">
+        </div>
+      </div>
+    
+  </div>
+  <div id="tabla"> 
+    <div class="row">
+      <div class="col-lg-1"></div>
+      <div class="col-lg-10">
+        <div class="table-responsive">
+          <table class="table">
+              <tr>
+                  <th>Id alquiler</th>
+                  <th>Fecha</th>
+                  <th>Duracion</th>
+                  <th>Precio</th>
+                  <th>Auto</th>
+                  <th>Cliente</th>
+              </tr>
+              <tr *ngFor="let item of alquiler">
+                <td>{{item.id_alquiler}}</td>
+                <td>{{item.fecha}}</td>
+                <td>{{item.duracion}}</td>
+                <td>{{item.precio | currency}}</td>
+                <td>{{item.fo_auto}}</td>
+                <td>{{item.fo_cliente}}</td>
+                <td>
+                  <span class="fas fa-edit" style="color: blue; cursor: pointer" title="Editar" (click)="cargar_datos(item, item.id_alquiler)"></span>
+                  <span class="fas fa-minus-square" style="color: red; cursor: pointer" title="Eliminar" (click)="eliminar(item.id_alquiler)"></span>
+                </td>
+              </tr>
+          </table>
+      </div>
+      </div>
+      <div class="col-lg-1"></div>
+    </div>
+
+   </div>
+</div>
+</section>

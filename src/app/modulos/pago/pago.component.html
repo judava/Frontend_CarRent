@@ -1,0 +1,109 @@
+<div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0">Reserva</h1>
+        </div><!-- /.col -->
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active">Reserva</li>
+          </ol>
+        </div><!-- /.col -->
+      </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </div>
+  <section class="content">
+    <div class="container-fluid">
+      <!--Contenido-->
+      <hr>
+      <input type="button" value="Insertar Reserva" class="btn btn-info" (click)="revelar_form('revelar')">
+      <!--formulario-->
+      <div id="formulario" *ngIf="rform==true">
+        
+          <div class="row">
+            <div class="col-lg-4">
+              <input type="text" class="form-control" placeholder="id reserva" [(ngModel)]="obj_reserva.id_reserva">
+              <span style="color: red;" *ngIf= "validar_id_reserva== false">Insertar Id reserva</span>
+            </div>
+            <div class="col-lg-4">
+              <input type="text" class="form-control" placeholder="Fecha" [(ngModel)]="obj_reserva.fecha">
+              <span style="color: red;" *ngIf= "validar_fecha== false">Fecha</span>
+            </div>
+            <div class="col-lg-4">
+              <input type="text" class="form-control" placeholder="Duracion" [(ngModel)]="obj_reserva.duracion">
+              <span style="color: red;" *ngIf= "validar_duracion== false">Fecha</span>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-lg-4">
+              <input type="text" class="form-control" placeholder="Precio" [(ngModel)]="obj_reserva.precio">
+              <span style="color: red;" *ngIf= "validar_precio== false">Precio</span>
+            </div>
+            <div class="col-lg-4">
+              <select class="form-control form-select" [(ngModel)]="obj_reserva.fo_auto">
+                <option value="" value="Seleccione auto" selected="selected">Seleccionar codigo Auto</option>
+                <option *ngFor="let itema2 of auto2" value="{{itema2.id_auto}}">{{itema2.id_auto}}</option>
+                <span style="color: red;" *ngIf= "validar_auto== false">Auto</span>
+              </select>
+            </div>
+            <div class="col-lg-4">
+              <select class="form-control form-select" [(ngModel)]="obj_reserva.fo_cliente">
+                <option value="" value="Seleccione cliente" selected="selected" >Seleccionar codigo Cliente</option>
+                <option *ngFor="let itemc2 of cliente2" value="{{itemc2.id_cliente}}">{{itemc2.id_cliente}}</option>
+                <span style="color: red;" *ngIf= "validar_cliente== false">Cliente</span>
+              </select>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-lg-4">
+              <input type="button" value="Guardar" class="btn btn-primary" style="width: 70%;" (click)="validar3('guardar')" *ngIf="botones_form==false">
+              <input type="button" value="Editar" class="btn btn-primary" style="width: 70%;" (click)="validar3('editar')" *ngIf="botones_form==true">
+            </div>
+            <div class="col-lg-4">
+              <input type="button" value="Cancelar" class="btn btn-secondary" style="width: 70%;"(click)="revelar_form('no revelar')">
+            </div>
+
+          </div>
+        
+        <br>
+      </div>
+      <div id="tabla"> 
+        <div class="row">
+          <div class="col-lg-1"></div>
+          <div class="col-lg-10">
+            <div class="table-responsive">
+              <table class="table">
+                  <tr>
+                      <th>Id reserva</th>
+                      <th>Fecha</th>
+                      <th>Duracion</th>
+                      <th>Precio</th>
+                      <th>Auto</th>
+                      <th>Ciente</th>
+                  </tr>
+                  <tr *ngFor="let item of pago">
+                    <td>{{item.id_reserva}}</td>
+                    <td>{{item.fecha}}</td>
+                    <td>{{item.duracion}}</td>
+                    <td>{{item.precio | currency}}</td>
+                    <td>{{item.fo_auto}}</td>
+                    <td>{{item.fo_cliente}}</td>
+                    <td>
+                      <span class="fas fa-edit" style="color: blue; cursor: pointer" title="Editar" (click)="cargar_datos(item, item.id_reserva)"></span>
+                      <span class="fas fa-minus-square" style="color: red; cursor: pointer" title="Eliminar" (click)="eliminar(item.id_reserva)"></span>
+                    </td>
+                  </tr>
+              </table>
+          </div>
+          </div>
+          <div class="col-lg-1"></div>
+        </div>
+
+       </div>
+  </div>
+  </section>
+
+

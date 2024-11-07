@@ -1,0 +1,118 @@
+<div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0">Vehiculo</h1>
+         <!-- <img src="/assets/dist/img/CarRent_header_banner.jpg" alt="Descripción de la imagen" class="img-fluid mt-3">-->
+        </div><!-- /.col -->
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active">vehiculo</li>
+          </ol>
+        </div><!-- /.col -->
+      </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </div>
+  <section class="content">
+    <div class="container-fluid">
+      <!--Contenido-->
+      <hr>
+      <input type="button" value="Insertar Auto" class="btn btn-info" (click)="descartar_form('descartar')">
+      
+      <!--formulario-->
+      <div id="formulario" *ngIf="dform==true">
+        
+          <div class="row">
+            <div class="col-lg-4">
+              <input type="text" class="form-control" placeholder="id auto" [(ngModel)]="obj_auto.id_auto">
+              <span style="color: red;" *ngIf= "validar_id_auto== false">Insertar Id alquiler</span>
+            </div>
+            <div class="col-lg-4">
+              <input type="text" class="form-control" placeholder="Marca" [(ngModel)]="obj_auto.marca">
+              <span style="color: red;" *ngIf= "validar_marca== false"> Insertar Marca</span>
+            </div>
+            <div class="col-lg-4">
+              <input type="text" class="form-control" placeholder="Modelo" [(ngModel)]="obj_auto.modelo">
+              <span style="color: red;" *ngIf= "validar_modelo== false"> Insertar Modelo</span>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-lg-4">
+              <input type="text" class="form-control" placeholder="Numero de placa" [(ngModel)]="obj_auto.numero_placa">
+              <span style="color: red;" *ngIf= "validar_numero_placa== false"> Insertar Numero de placa</span>
+            </div>
+            <div class="col-lg-4">
+              <input type="text" class="form-control" placeholder="Caracteristicas" [(ngModel)]="obj_auto.caracteristicas">
+              <span style="color: red;" *ngIf= "validar_caracteristicas== false"> Insertar Caracteristicas</span>
+            </div>
+            <div class="col-lg-4">
+              <input type="text" class="form-control" placeholder="Disponibilidad" [(ngModel)]="obj_auto.disponibilidad">
+              <span style="color: red;" *ngIf= "validar_disponibilidad== false"> Insertar Disponibilidad</span>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-lg-4">
+              <input type="text" class="form-control" placeholder="Tiempo alquiler" [(ngModel)]="obj_auto.tiempo_alquiler">
+              <span style="color: red;" *ngIf= "validar_tiempo_alquiler== false"> Insertar Tiempo alquiler</span>
+            </div>
+            <div class="col-lg-4">
+              <input type="text" class="form-control" placeholder="Precio" [(ngModel)]="obj_auto.precio">
+              <span style="color: red;" *ngIf= "validar_precio== false"> Insertar Precio</span>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-lg-4">
+              <input type="button" value="Guardar" class="btn btn-primary" style="width: 70%;" (click)="validar4('guardar')" *ngIf="botones_form==false">
+              <input type="button" value="Editar" class="btn btn-primary" style="width: 70%;" (click)="validar4('editar')" *ngIf="botones_form==true">
+            </div>
+            <div class="col-lg-4">
+              <input type="button" value="cancelar" class="btn btn-secondary" style="width: 70%;" (click)="descartar_form('no descartar')">
+            </div>
+          </div>
+          <br>
+        
+      </div>
+      <div id="tabla"> 
+        <div class="row">
+          <div class="col-lg-1"></div>
+          <div class="col-lg-10">
+            <div class="table-responsive">
+              <table class="table">
+                  <tr>
+                      <th>Id auto</th>
+                      <th>Marca</th>
+                      <th>Modelo</th>
+                      <th>Numero de placa</th>
+                      <th>Caracteristicas</th>
+                      <th>Disponibilidad</th>
+                      <th>Tiempo alquiler</th>
+                      <th>Precio</th>
+                  </tr>
+                  <tr *ngFor="let item of auto">
+                    <td>{{item.id_auto}}</td>
+                    <td>{{item.marca}}</td>
+                    <td>{{item.modelo}}</td>
+                    <td>{{item.numero_placa}}</td>
+                    <td>{{item.caracteristicas}}</td>
+                    <td>{{item.disponibilidad}}</td>
+                    <td>{{item.tiempo_alquiler}}</td>
+                    <td>{{item.precio | currency}}</td>
+                    <td>
+                      <span class="fas fa-edit" style="color: blue; cursor: pointer" title="Editar" (click)="cargar_datos(item, item.id_auto)"></span>
+                      <span class="fas fa-minus-square" style="color: red; cursor: pointer" title="Eliminar" (click)="eliminar(item.id_auto)"></span>
+                    </td>
+                  </tr>
+              </table>
+          </div>
+          </div>
+          <div class="col-lg-1"></div>
+        </div>
+    
+       </div>
+    </div>
+  </section>
+
